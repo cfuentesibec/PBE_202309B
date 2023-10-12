@@ -1,0 +1,14 @@
+{
+  "name": "pbe_202309b",
+  "version": "1.0.0",
+  "description": "Repositorio para proyecto colaborativo PBE_202309B",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
