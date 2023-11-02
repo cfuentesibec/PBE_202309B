@@ -65,6 +65,14 @@ app.get('/tareas/listar', (request, response) => {
     response.send(tareas)
 })
 
+app.post('/crear/tarea', (request, response) => 
+tarea = {
+    'nombre' : 'crear un endpoint',
+    'completado' : true,
+},
+response.send(tarea)
+)
+
 // listen = escuchar
 app.listen(puerto, () => {
     console.log('Escuchando en el puerto ' + puerto)
