@@ -15,6 +15,56 @@ app.get('/tareas/buscar', (request, response) => {
     response.send(tarea)
 })
 
+app.get('/tareas/listar', (request, response) => {
+        tareas = [
+        
+        {
+            "nombre": "Limpiar la cocina",
+            "prioridad": "Alta",
+            "tiempo_estimado": "1 hora"
+          },
+          {
+            "nombre": "Pasar la aspiradora en la sala de estar",
+            "prioridad": "Media",
+            "tiempo_estimado": "30 minutos"
+          },
+          {
+            "nombre": "Hacer la compra de comestibles",
+            "prioridad": "Alta",
+            "tiempo_estimado": "1.5 horas"
+          },
+          {
+            "nombre": "Lavar la ropa",
+            "prioridad": "Media",
+            "tiempo_estimado": "1.5 horas"
+          },
+          {
+            "nombre": "Regar las plantas",
+            "prioridad": "Baja",
+            "tiempo_estimado": "15 minutos"
+          },
+          {
+            "nombre": "Organizar el armario",
+            "prioridad": "Media",
+            "tiempo_estimado": "2 horas"
+          },
+          {
+            "nombre": "Hacer la cama",
+            "prioridad": "Baja",
+            "tiempo_estimado": "10 minutos"
+          },
+          {
+            "nombre": "Limpiar el baño",
+            "prioridad": "Alta",
+            "tiempo_estimado": "45 minutos"
+          }
+
+        ]
+
+
+    response.send(tareas)
+})
+
 // listen = escuchar
 app.listen(puerto, () => {
     console.log('Escuchando en el puerto ' + puerto)
