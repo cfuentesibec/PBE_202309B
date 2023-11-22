@@ -1,19 +1,23 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
+app.use(bodyParser.json())
+
 const puerto = 5000
+
+const tareas_controller = require('./controllers/tareas_controller')
 
 // definicion de endpoint GET en ruta principal
 app.get('/', (request, response) => {
     response.send('Hola mundo!')
 })
 
-app.get('/tareas/buscar', (request, response) => {
-    tarea = {
-        'nombre': 'Lavar la ropa',
-        'completado': false
-    }
-    response.send(tarea)
-})
+app.get(                            // Método
+  '/api/v1/tareas/buscar',          // Ruta / Path
+  tareas_controller.buscar_tarea,   // Handler
+)
+
+app.post('/api/v1/tareas/crear', tareas_controller.crear_tarea)
 
 app.get('/tareas/listar', (request, response) => {
         tareas = [
@@ -64,14 +68,6 @@ app.get('/tareas/listar', (request, response) => {
 
     response.send(tareas)
 })
-
-app.post('/crear/tarea', (request, response) => 
-tarea = {
-    'nombre' : 'crear un endpoint',
-    'completado' : true,
-},
-response.send(tarea)
-)
 
 // listen = escuchar
 app.listen(puerto, () => {
