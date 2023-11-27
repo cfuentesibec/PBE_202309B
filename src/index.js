@@ -69,6 +69,8 @@ app.get('/tareas/listar', (request, response) => {
     response.send(tareas)
 })
 
+app.put('/api/v1/tareas/actualizar', tareas_controller.actualizar_tarea)
+
 // listen = escuchar
 app.listen(puerto, () => {
     console.log('Escuchando en el puerto ' + puerto)
