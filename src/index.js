@@ -19,55 +19,7 @@ app.get(                            // Método
 
 app.post('/api/v1/tareas/crear', tareas_controller.crear_tarea)
 
-app.get('/tareas/listar', (request, response) => {
-        tareas = [
-        
-        {
-            "nombre": "Limpiar la cocina",
-            "prioridad": "Alta",
-            "tiempo_estimado": "1 hora"
-          },
-          {
-            "nombre": "Pasar la aspiradora en la sala de estar",
-            "prioridad": "Media",
-            "tiempo_estimado": "30 minutos"
-          },
-          {
-            "nombre": "Hacer la compra de comestibles",
-            "prioridad": "Alta",
-            "tiempo_estimado": "1.5 horas"
-          },
-          {
-            "nombre": "Lavar la ropa",
-            "prioridad": "Media",
-            "tiempo_estimado": "1.5 horas"
-          },
-          {
-            "nombre": "Regar las plantas",
-            "prioridad": "Baja",
-            "tiempo_estimado": "15 minutos"
-          },
-          {
-            "nombre": "Organizar el armario",
-            "prioridad": "Media",
-            "tiempo_estimado": "2 horas"
-          },
-          {
-            "nombre": "Hacer la cama",
-            "prioridad": "Baja",
-            "tiempo_estimado": "10 minutos"
-          },
-          {
-            "nombre": "Limpiar el baño",
-            "prioridad": "Alta",
-            "tiempo_estimado": "45 minutos"
-          }
-
-        ]
-
-
-    response.send(tareas)
-})
+app.get('/api/v1/tareas/listar', tareas_controller.listar_tarea)
 
 // listen = escuchar
 app.listen(puerto, () => {

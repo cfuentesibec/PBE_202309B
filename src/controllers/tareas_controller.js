@@ -22,7 +22,20 @@ function crear_tarea(request, response) {
     response.status(201).send(tarea);
 }
 
+const tarea_listar = require('../model/tarea_listar');
+
+function listar_tarea(request, response) {
+    console.log("Lista de Tareas:")
+    Array.forEach(function(tarea_listar, indice) {
+        console.log(`${indice + 1}. Tarea: ${tarea.nombre}`);
+        console.log(`   Prioridad: ${tarea.prioridad}`);
+        console.log(`   Tiempo estimado: ${tarea.tiempo_estimado}`);
+        console.log("   ------------");
+    });
+}
+
 module.exports = {
     buscar_tarea,
     crear_tarea,
+    listar_tarea,
 }
