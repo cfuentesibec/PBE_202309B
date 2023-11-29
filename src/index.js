@@ -25,4 +25,3 @@ app.get('/api/v1/tareas/listar', tareas_controller.listar_tarea)
 app.listen(puerto, () => {
     console.log('Escuchando en el puerto ' + puerto)
 })
-
