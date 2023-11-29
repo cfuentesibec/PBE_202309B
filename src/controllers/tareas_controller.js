@@ -22,7 +22,17 @@ function crear_tarea(request, response) {
     response.status(201).send(tarea);
 }
 
+function actualizar_tarea(request, response) {
+    tarea = request.body;
+    tarea = modelo.actualizar(tarea);
+    if (!tarea) {
+        return response.status(500).send("Hubo un error inesperado.");
+    }
+    response.status(201).send(tarea);
+}
+
 module.exports = {
     buscar_tarea,
     crear_tarea,
+    actualizar_tarea,
 }

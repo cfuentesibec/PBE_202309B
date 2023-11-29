@@ -17,7 +17,12 @@ function buscar(indice) {
     return TAREAS[indice];
 }
 
+function actualizar(tarea)  {
+    
+}
+
 module.exports = {
     guardar,
     buscar,
+    actualizar,
 }
