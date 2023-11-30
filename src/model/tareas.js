@@ -44,12 +44,19 @@ TAREAS = [
 	}
 ];
 
+function buscar(texto) {
+	tareas = listar();
+	return tareas.filter((tarea) => {
+		return tarea.nombre.includes(texto);
+	});
+}
+
 function guardar(tarea) {
 	TAREAS.push(tarea);
 	return { indice: TAREAS.length-1, ...tarea }
 }
 
-function buscar(indice) {
+function obtener(indice) {
     return { "indice": indice, ...TAREAS[indice]};
 }
 
@@ -68,6 +75,7 @@ function listar() {
 module.exports = {
 	actualizar,
 	guardar,
-	buscar,
+	obtener,
 	listar,
+	buscar,
 }

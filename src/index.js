@@ -13,9 +13,11 @@ app.get('/', (request, response) => {
 })
 
 app.get(                            // Método
-  '/api/v1/tareas/buscar',          // Ruta / Path
-  tareas_controller.buscar_tarea,   // Handler
-) 
+  '/api/v1/tareas/:indice',          // Ruta / Path
+  tareas_controller.obtener_tarea,   // Handler
+)
+
+app.get('/api/v1/tareas/buscar', tareas_controller.buscar_tarea)
 
 app.post('/api/v1/tareas/crear', tareas_controller.crear_tarea)
 
