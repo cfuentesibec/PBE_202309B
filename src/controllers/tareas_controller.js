@@ -24,10 +24,15 @@ function crear_tarea(request, response) {
 
 function actualizar_tarea(request, response) {
     tarea = request.body;
+    if (!tarea || tarea.indice == undefined) {
+        return response.status(400).send("Solicitud inválida. Revise la data e intente de nuevo.")
+    }
+
     tarea = modelo.actualizar(tarea);
     if (!tarea) {
         return response.status(500).send("Hubo un error inesperado.");
     }
+
     response.status(201).send(tarea);
 }
 

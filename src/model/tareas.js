@@ -14,11 +14,13 @@ function guardar(tarea) {
 }
 
 function buscar(indice) {
-    return TAREAS[indice];
+    return { "indice": indice, ...TAREAS[indice]};
 }
 
 function actualizar(tarea)  {
-    
+	var indice = tarea.indice;
+	delete tarea.indice;
+	return TAREAS[indice] = tarea;
 }
 
 module.exports = {
