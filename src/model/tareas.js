@@ -50,7 +50,6 @@ function guardar(tarea) {
 }
 
 function buscar(indice) {
-<<<<<<< HEAD
     return { "indice": indice, ...TAREAS[indice]};
 }
 
@@ -60,14 +59,6 @@ function actualizar(tarea)  {
 	return TAREAS[indice] = tarea;
 }
 
-module.exports = {
-    guardar,
-    buscar,
-    actualizar,
-=======
-	return TAREAS[indice];
-}
-
 function listar() {
 	return TAREAS.map((tarea, indice) => {
 		return { indice, ...tarea };
@@ -75,8 +66,8 @@ function listar() {
 }
 
 module.exports = {
+	actualizar,
 	guardar,
 	buscar,
 	listar,
->>>>>>> b288830c2bede5925632dcd33f5a9e9a014fc9d6
 }
