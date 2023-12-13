@@ -6,7 +6,7 @@ MODELO TAREA:
 - completado (bool)
 */
 
-TAREAS = [
+var TAREAS = [
 	{
 		"nombre": "Limpiar la cocina",
 		"prioridad": "3",
@@ -44,9 +44,13 @@ TAREAS = [
 	}
 ];
 
+function obtener_cantidad_tareas() {
+	return TAREAS.length;
+}
+
 function buscar(texto) {
-	tareas = listar();
-	return tareas.filter((tarea) => {
+	lista = listar();
+	return lista.filter((tarea) => {
 		return tarea.nombre.includes(texto);
 	});
 }
@@ -66,10 +70,28 @@ function actualizar(tarea)  {
 	return TAREAS[indice] = tarea;
 }
 
-function listar() {
-	return TAREAS.map((tarea, indice) => {
-		return { indice, ...tarea };
+function listar(inicio, fin) {
+	var t = TAREAS.map((tarea, indice) => {
+		return { "indice": indice, ...tarea };
 	});
+
+	return t.slice(inicio, fin);
+}
+
+function eliminar_por_indice(indice) {
+	var hay_error = false;
+
+	if (indice < 0 || indice >= TAREAS.length) {
+		hay_error = true;
+		return hay_error;
+	}
+
+	var elementos_eliminados = TAREAS.splice(indice, 1);
+	if (elementos_eliminados.length < 1) {
+		hay_error = true;
+	}
+
+	return hay_error;
 }
 
 module.exports = {
@@ -78,4 +100,6 @@ module.exports = {
 	obtener,
 	listar,
 	buscar,
+	eliminar_por_indice,
+	obtener_cantidad_tareas,
 }

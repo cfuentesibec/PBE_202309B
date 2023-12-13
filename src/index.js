@@ -13,9 +13,11 @@ app.get('/', (request, response) => {
 })
 
 app.get(                            // Método
-  '/api/v1/tareas/:indice',          // Ruta / Path
+  '/api/v1/tareas/obtener/:indice',          // Ruta / Path
   tareas_controller.obtener_tarea,   // Handler
 )
+
+// CRUD = Create, Read, Update, Delete
 
 app.get('/api/v1/tareas/buscar', tareas_controller.buscar_tarea)
 
@@ -24,6 +26,8 @@ app.post('/api/v1/tareas/crear', tareas_controller.crear_tarea)
 app.get('/api/v1/tareas/listar', tareas_controller.listar_tarea)
 
 app.put('/api/v1/tareas/actualizar', tareas_controller.actualizar_tarea)
+
+app.delete('/api/v1/tareas/eliminar/:indice', tareas_controller.eliminar_tarea)
 
 // listen = escuchar
 app.listen(puerto, () => {
