@@ -56,21 +56,23 @@ function listar_tarea(request, response) {
 
     var cantidad_tareas = modelo.obtener_cantidad_tareas();
     
-    if (request.params.tamaño_pagina) {
-        tamaño_pagina = Math.min(request.params.tamaño_pagina, globals.MAX_TAMAÑO_PAGINA);
+    // query params = parametros del URL
+    if (request.query.tamaño_pagina) {
+        tamaño_pagina = Math.min(request.query.tamaño_pagina, globals.MAX_TAMAÑO_PAGINA);
     }
 
+    // ceil = ceiling = techo (redondeo hacia arriba)
     var cantidad_paginas = Math.ceil(cantidad_tareas / tamaño_pagina);
-    if (request.params.pagina_actual) {
-        pagina_actual = Math.min(request.params.pagina_actual, cantidad_paginas);
+    if (request.query.pagina_actual) {
+        pagina_actual = Math.min(request.query.pagina_actual, cantidad_paginas);
     }
 
     if (pagina_actual < 1 || tamaño_pagina < 1) {
         return response.status(400).send("Solicitud inválida. Revise la data e intente de nuevo.")
     }
 
-    var indice_inicio = pagina_actual * tamaño_pagina - tamaño_pagina - 1;
-    var indice_fin = Math.min(pagina_actual * tamaño_pagina - 1, cantidad_tareas - 1);
+    var indice_inicio = pagina_actual * tamaño_pagina - tamaño_pagina;
+    var indice_fin = Math.min(pagina_actual * tamaño_pagina, cantidad_tareas);
 
     var lista = modelo.listar(indice_inicio, indice_fin);
     if (!lista) {
@@ -79,10 +81,10 @@ function listar_tarea(request, response) {
 
     // wrapper = envoltorio
     response.status(200).send({
-        "pagina_actual": pagina_actual,
-        "tamaño_pagina": tamaño_pagina,
-        "cantidad_tareas": cantidad_tareas,
-        "cantidad_paginas": cantidad_paginas,
+        pagina_actual,
+        tamaño_pagina,
+        cantidad_tareas,
+        cantidad_paginas,
         "tareas": lista,
     });
 }
