@@ -102,6 +102,24 @@ function eliminar_tarea(request, response) {
     response.status(200).send();
 }
 
+function filtrar_Tarea_Controller(req, res) {
+    const filtros = req.query;
+    const pagina = req.query.pagina;
+    const elementos_por_pagina = req.query.elementos_por_pagina;
+
+    if (Object.keys(filtros).length === 0) {
+        return res.status(400).json({ error: 'Debe proporcionar al menos un campo para el filtrado' });
+    }
+
+    try {
+        const resultadoFiltrado = modelo.filtrar_Tarea(filtros, pagina, elementos_por_pagina);
+        res.json(resultadoFiltrado);
+    } catch (error) {
+        res.status(error.status || 500).json({ error: error.message });
+    }
+}
+
+
 module.exports = {
     obtener_tarea,
     crear_tarea,
@@ -109,4 +127,5 @@ module.exports = {
     listar_tarea,
     buscar_tarea,
     eliminar_tarea,
+    filtrar_Tarea_Controller
 }

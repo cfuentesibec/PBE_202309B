@@ -28,6 +28,8 @@ app.get('/api/v1/tareas/listar', middlewares.middleware2, tareas_controller.list
 
 app.put('/api/v1/tareas/actualizar', tareas_controller.actualizar_tarea)
 
+app.get('/api/v1/tareas/filtrar', tareas_controller.filtrar_Tarea_Controller)
+
 app.route('/api/v1/tareas/:indice')
   .get(tareas_controller.obtener_tarea)
   .delete(tareas_controller.eliminar_tarea);
